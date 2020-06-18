@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Caja_Unapec.FORMA_PAGO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODALIDAD_PAGO.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MODALIDAD_PAGO.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdFormaPago }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdFormaPago }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdFormaPago })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model Caja_Unapec.FORMA_PAGO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FORMA_PAGO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MODALIDAD_PAGO.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MODALIDAD_PAGO.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdFormaPago }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

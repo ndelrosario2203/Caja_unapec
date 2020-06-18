@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Caja_UnapecModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CARRERA">
+    <Key>
+      <PropertyRef Name="IdCarrera" />
+    </Key>
+    <Property Name="IdCarrera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CLIENTE" Relationship="Self.FK_CLIENTE_CARRERA" FromRole="CARRERA" ToRole="CLIENTE" />
+  </EntityType>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="IdTipoPersona" Type="Int32" Nullable="false" />
+    <Property Name="IdCarrera" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CARRERA" Relationship="Self.FK_CLIENTE_CARRERA" FromRole="CLIENTE" ToRole="CARRERA" />
+    <NavigationProperty Name="TIPO_PERSONA" Relationship="Self.FK_CLIENTE_TIPO_PERSONA" FromRole="CLIENTE" ToRole="TIPO_PERSONA" />
+    <NavigationProperty Name="MOVIMIENTO" Relationship="Self.FK_MOVIMIENTO_CLIENTE" FromRole="CLIENTE" ToRole="MOVIMIENTO" />
+  </EntityType>
+  <EntityType Name="DOCUMENTO">
+    <Key>
+      <PropertyRef Name="IdDocumento" />
+    </Key>
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MOVIMIENTO" Relationship="Self.FK_MOVIMIENTO_DOCUMENTO" FromRole="DOCUMENTO" ToRole="MOVIMIENTO" />
+  </EntityType>
+  <EntityType Name="EMPLEADO">
+    <Key>
+      <PropertyRef Name="IdEmpleado" />
+    </Key>
+    <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="IdTanda" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TANDA" Relationship="Self.FK_EMPLEADO_TANDA" FromRole="EMPLEADO" ToRole="TANDA" />
+    <NavigationProperty Name="MOVIMIENTO" Relationship="Self.FK_MOVIMIENTO_EMPLEADO" FromRole="EMPLEADO" ToRole="MOVIMIENTO" />
+  </EntityType>
+  <EntityType Name="FORMA_PAGO">
+    <Key>
+      <PropertyRef Name="IdFormaPago" />
+    </Key>
+    <Property Name="IdFormaPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="IdModalidadPago" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MODALIDAD_PAGO" Relationship="Self.FK_FORMA_PAGO_MODALIDAD_PAGO" FromRole="FORMA_PAGO" ToRole="MODALIDAD_PAGO" />
+    <NavigationProperty Name="MOVIMIENTO" Relationship="Self.FK_MOVIMIENTO_FORMA_PAGO" FromRole="FORMA_PAGO" ToRole="MOVIMIENTO" />
+  </EntityType>
+  <EntityType Name="MODALIDAD_PAGO">
+    <Key>
+      <PropertyRef Name="IdModalidadPago" />
+    </Key>
+    <Property Name="IdModalidadPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FORMA_PAGO" Relationship="Self.FK_FORMA_PAGO_MODALIDAD_PAGO" FromRole="MODALIDAD_PAGO" ToRole="FORMA_PAGO" />
+  </EntityType>
+  <EntityType Name="MOVIMIENTO">
+    <Key>
+      <PropertyRef Name="IdMovimiento" />
+    </Key>
+    <Property Name="IdMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Monto" Type="Double" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="IdServicio" Type="Int32" Nullable="false" />
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" />
+    <Property Name="IdEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="IdFormaPago" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CLIENTE" Relationship="Self.FK_MOVIMIENTO_CLIENTE" FromRole="MOVIMIENTO" ToRole="CLIENTE" />
+    <NavigationProperty Name="DOCUMENTO" Relationship="Self.FK_MOVIMIENTO_DOCUMENTO" FromRole="MOVIMIENTO" ToRole="DOCUMENTO" />
+    <NavigationProperty Name="EMPLEADO" Relationship="Self.FK_MOVIMIENTO_EMPLEADO" FromRole="MOVIMIENTO" ToRole="EMPLEADO" />
+    <NavigationProperty Name="FORMA_PAGO" Relationship="Self.FK_MOVIMIENTO_FORMA_PAGO" FromRole="MOVIMIENTO" ToRole="FORMA_PAGO" />
+    <NavigationProperty Name="SERVICIO" Relationship="Self.FK_MOVIMIENTO_SERVICIO" FromRole="MOVIMIENTO" ToRole="SERVICIO" />
+  </EntityType>
+  <EntityType Name="SERVICIO">
+    <Key>
+      <PropertyRef Name="IdServicio" />
+    </Key>
+    <Property Name="IdServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MOVIMIENTO" Relationship="Self.FK_MOVIMIENTO_SERVICIO" FromRole="SERVICIO" ToRole="MOVIMIENTO" />
+  </EntityType>
+  <EntityType Name="TANDA">
+    <Key>
+      <PropertyRef Name="IdTanda" />
+    </Key>
+    <Property Name="IdTanda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="EMPLEADO" Relationship="Self.FK_EMPLEADO_TANDA" FromRole="TANDA" ToRole="EMPLEADO" />
+  </EntityType>
+  <EntityType Name="TIPO_PERSONA">
+    <Key>
+      <PropertyRef Name="IdTipoPersona" />
+    </Key>
+    <Property Name="IdTipoPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CLIENTE" Relationship="Self.FK_CLIENTE_TIPO_PERSONA" FromRole="TIPO_PERSONA" ToRole="CLIENTE" />
+  </EntityType>
+  <Association Name="FK_CLIENTE_CARRERA">
+    <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARRERA">
+        <PropertyRef Name="IdCarrera" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="IdCarrera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENTE_TIPO_PERSONA">
+    <End Role="TIPO_PERSONA" Type="Self.TIPO_PERSONA" Multiplicity="1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_PERSONA">
+        <PropertyRef Name="IdTipoPersona" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="IdTipoPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOVIMIENTO_CLIENTE">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="MOVIMIENTO">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOVIMIENTO_DOCUMENTO">
+    <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="1" />
+    <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCUMENTO">
+        <PropertyRef Name="IdDocumento" />
+      </Principal>
+      <Dependent Role="MOVIMIENTO">
+        <PropertyRef Name="IdDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLEADO_TANDA">
+    <End Role="TANDA" Type="Self.TANDA" Multiplicity="1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TANDA">
+        <PropertyRef Name="IdTanda" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="IdTanda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOVIMIENTO_EMPLEADO">
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+    <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADO">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="MOVIMIENTO">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FORMA_PAGO_MODALIDAD_PAGO">
+    <End Role="MODALIDAD_PAGO" Type="Self.MODALIDAD_PAGO" Multiplicity="1" />
+    <End Role="FORMA_PAGO" Type="Self.FORMA_PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODALIDAD_PAGO">
+        <PropertyRef Name="IdModalidadPago" />
+      </Principal>
+      <Dependent Role="FORMA_PAGO">
+        <PropertyRef Name="IdModalidadPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOVIMIENTO_FORMA_PAGO">
+    <End Role="FORMA_PAGO" Type="Self.FORMA_PAGO" Multiplicity="1" />
+    <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FORMA_PAGO">
+        <PropertyRef Name="IdFormaPago" />
+      </Principal>
+      <Dependent Role="MOVIMIENTO">
+        <PropertyRef Name="IdFormaPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOVIMIENTO_SERVICIO">
+    <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+    <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICIO">
+        <PropertyRef Name="IdServicio" />
+      </Principal>
+      <Dependent Role="MOVIMIENTO">
+        <PropertyRef Name="IdServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Caja_UnapecEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CARRERA" EntityType="Self.CARRERA" />
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+    <EntitySet Name="DOCUMENTO" EntityType="Self.DOCUMENTO" />
+    <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" />
+    <EntitySet Name="FORMA_PAGO" EntityType="Self.FORMA_PAGO" />
+    <EntitySet Name="MODALIDAD_PAGO" EntityType="Self.MODALIDAD_PAGO" />
+    <EntitySet Name="MOVIMIENTO" EntityType="Self.MOVIMIENTO" />
+    <EntitySet Name="SERVICIO" EntityType="Self.SERVICIO" />
+    <EntitySet Name="TANDA" EntityType="Self.TANDA" />
+    <EntitySet Name="TIPO_PERSONA" EntityType="Self.TIPO_PERSONA" />
+    <AssociationSet Name="FK_CLIENTE_CARRERA" Association="Self.FK_CLIENTE_CARRERA">
+      <End Role="CARRERA" EntitySet="CARRERA" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENTE_TIPO_PERSONA" Association="Self.FK_CLIENTE_TIPO_PERSONA">
+      <End Role="TIPO_PERSONA" EntitySet="TIPO_PERSONA" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOVIMIENTO_CLIENTE" Association="Self.FK_MOVIMIENTO_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOVIMIENTO_DOCUMENTO" Association="Self.FK_MOVIMIENTO_DOCUMENTO">
+      <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+      <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLEADO_TANDA" Association="Self.FK_EMPLEADO_TANDA">
+      <End Role="TANDA" EntitySet="TANDA" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOVIMIENTO_EMPLEADO" Association="Self.FK_MOVIMIENTO_EMPLEADO">
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+      <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FORMA_PAGO_MODALIDAD_PAGO" Association="Self.FK_FORMA_PAGO_MODALIDAD_PAGO">
+      <End Role="MODALIDAD_PAGO" EntitySet="MODALIDAD_PAGO" />
+      <End Role="FORMA_PAGO" EntitySet="FORMA_PAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOVIMIENTO_FORMA_PAGO" Association="Self.FK_MOVIMIENTO_FORMA_PAGO">
+      <End Role="FORMA_PAGO" EntitySet="FORMA_PAGO" />
+      <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOVIMIENTO_SERVICIO" Association="Self.FK_MOVIMIENTO_SERVICIO">
+      <End Role="SERVICIO" EntitySet="SERVICIO" />
+      <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

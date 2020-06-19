@@ -17,7 +17,7 @@ namespace Caja_Unapec.Controllers
         // GET: DOCUMENTO
         public ActionResult Index()
         {
-            return View(db.DOCUMENTO.ToList());
+            return View(db.DOCUMENTOes.ToList());
         }
 
         // GET: DOCUMENTO/Details/5
@@ -27,7 +27,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DOCUMENTO dOCUMENTO = db.DOCUMENTO.Find(id);
+            DOCUMENTO dOCUMENTO = db.DOCUMENTOes.Find(id);
             if (dOCUMENTO == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace Caja_Unapec.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.DOCUMENTO.Add(dOCUMENTO);
+                db.DOCUMENTOes.Add(dOCUMENTO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DOCUMENTO dOCUMENTO = db.DOCUMENTO.Find(id);
+            DOCUMENTO dOCUMENTO = db.DOCUMENTOes.Find(id);
             if (dOCUMENTO == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DOCUMENTO dOCUMENTO = db.DOCUMENTO.Find(id);
+            DOCUMENTO dOCUMENTO = db.DOCUMENTOes.Find(id);
             if (dOCUMENTO == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace Caja_Unapec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DOCUMENTO dOCUMENTO = db.DOCUMENTO.Find(id);
-            db.DOCUMENTO.Remove(dOCUMENTO);
+            DOCUMENTO dOCUMENTO = db.DOCUMENTOes.Find(id);
+            db.DOCUMENTOes.Remove(dOCUMENTO);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

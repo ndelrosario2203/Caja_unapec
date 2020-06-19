@@ -17,7 +17,7 @@ namespace Caja_Unapec.Controllers
         // GET: SERVICIO
         public ActionResult Index()
         {
-            return View(db.SERVICIO.ToList());
+            return View(db.SERVICIOs.ToList());
         }
 
         // GET: SERVICIO/Details/5
@@ -27,7 +27,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SERVICIO sERVICIO = db.SERVICIO.Find(id);
+            SERVICIO sERVICIO = db.SERVICIOs.Find(id);
             if (sERVICIO == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace Caja_Unapec.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.SERVICIO.Add(sERVICIO);
+                db.SERVICIOs.Add(sERVICIO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SERVICIO sERVICIO = db.SERVICIO.Find(id);
+            SERVICIO sERVICIO = db.SERVICIOs.Find(id);
             if (sERVICIO == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SERVICIO sERVICIO = db.SERVICIO.Find(id);
+            SERVICIO sERVICIO = db.SERVICIOs.Find(id);
             if (sERVICIO == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace Caja_Unapec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SERVICIO sERVICIO = db.SERVICIO.Find(id);
-            db.SERVICIO.Remove(sERVICIO);
+            SERVICIO sERVICIO = db.SERVICIOs.Find(id);
+            db.SERVICIOs.Remove(sERVICIO);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

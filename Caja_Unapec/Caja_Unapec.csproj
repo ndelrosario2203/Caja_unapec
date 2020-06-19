@@ -197,11 +197,26 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Caja_UnapecEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Caja_UnapecEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Caja_UnapecEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Caja_UnapecEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Caja_UnapecEntities.edmx</DependentUpon>
+    </Compile>
     <Compile Include="CARRERA.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CLIENTE.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CARRERAController.cs" />
@@ -217,54 +232,49 @@
     <Compile Include="Controllers\TANDAController.cs" />
     <Compile Include="Controllers\TIPO_PERSONAController.cs" />
     <Compile Include="DOCUMENTO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="EMPLEADO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FORMA_PAGO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MODALIDAD_PAGO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="MOVIMIENTO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SERVICIO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="TANDA.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="TIPO_PERSONA.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Caja_UnapecEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Caja_UnapecEntities.edmx</DependentUpon>
+      <LastGenOutput>Caja_UnapecEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Caja_UnapecEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Caja_UnapecEntities.edmx</DependentUpon>
+      <LastGenOutput>Caja_UnapecEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -273,27 +283,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Model1.edmx">
+    <EntityDeploy Include="Caja_UnapecEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Caja_UnapecEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Caja_UnapecEntities.edmx.diagram">
+      <DependentUpon>Caja_UnapecEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

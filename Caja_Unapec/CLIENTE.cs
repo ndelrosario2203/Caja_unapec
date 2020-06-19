@@ -17,7 +17,7 @@ namespace Caja_Unapec
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CLIENTE()
         {
-            this.MOVIMIENTO = new HashSet<MOVIMIENTO>();
+            this.MOVIMIENTOes = new HashSet<MOVIMIENTO>();
         }
     
         public int IdCliente { get; set; }
@@ -29,6 +29,6 @@ namespace Caja_Unapec
         public virtual CARRERA CARRERA { get; set; }
         public virtual TIPO_PERSONA TIPO_PERSONA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MOVIMIENTO> MOVIMIENTO { get; set; }
+        public virtual ICollection<MOVIMIENTO> MOVIMIENTOes { get; set; }
     }
 }

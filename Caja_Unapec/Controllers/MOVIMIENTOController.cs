@@ -17,8 +17,8 @@ namespace Caja_Unapec.Controllers
         // GET: MOVIMIENTO
         public ActionResult Index()
         {
-            var mOVIMIENTO = db.MOVIMIENTO.Include(m => m.CLIENTE).Include(m => m.DOCUMENTO).Include(m => m.EMPLEADO).Include(m => m.FORMA_PAGO).Include(m => m.SERVICIO);
-            return View(mOVIMIENTO.ToList());
+            var mOVIMIENTOes = db.MOVIMIENTOes.Include(m => m.CLIENTE).Include(m => m.DOCUMENTO).Include(m => m.EMPLEADO).Include(m => m.FORMA_PAGO).Include(m => m.SERVICIO);
+            return View(mOVIMIENTOes.ToList());
         }
 
         // GET: MOVIMIENTO/Details/5
@@ -28,7 +28,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MOVIMIENTO mOVIMIENTO = db.MOVIMIENTO.Find(id);
+            MOVIMIENTO mOVIMIENTO = db.MOVIMIENTOes.Find(id);
             if (mOVIMIENTO == null)
             {
                 return HttpNotFound();
@@ -39,11 +39,11 @@ namespace Caja_Unapec.Controllers
         // GET: MOVIMIENTO/Create
         public ActionResult Create()
         {
-            ViewBag.IdCliente = new SelectList(db.CLIENTE, "IdCliente", "Nombre");
-            ViewBag.IdDocumento = new SelectList(db.DOCUMENTO, "IdDocumento", "Descripcion");
-            ViewBag.IdEmpleado = new SelectList(db.EMPLEADO, "IdEmpleado", "Nombre");
+            ViewBag.IdCliente = new SelectList(db.CLIENTEs, "IdCliente", "Nombre");
+            ViewBag.IdDocumento = new SelectList(db.DOCUMENTOes, "IdDocumento", "Descripcion");
+            ViewBag.IdEmpleado = new SelectList(db.EMPLEADOes, "IdEmpleado", "Nombre");
             ViewBag.IdFormaPago = new SelectList(db.FORMA_PAGO, "IdFormaPago", "Descripcion");
-            ViewBag.IdServicio = new SelectList(db.SERVICIO, "IdServicio", "Descripcion");
+            ViewBag.IdServicio = new SelectList(db.SERVICIOs, "IdServicio", "Descripcion");
             return View();
         }
 
@@ -56,16 +56,16 @@ namespace Caja_Unapec.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.MOVIMIENTO.Add(mOVIMIENTO);
+                db.MOVIMIENTOes.Add(mOVIMIENTO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdCliente = new SelectList(db.CLIENTE, "IdCliente", "Nombre", mOVIMIENTO.IdCliente);
-            ViewBag.IdDocumento = new SelectList(db.DOCUMENTO, "IdDocumento", "Descripcion", mOVIMIENTO.IdDocumento);
-            ViewBag.IdEmpleado = new SelectList(db.EMPLEADO, "IdEmpleado", "Nombre", mOVIMIENTO.IdEmpleado);
+            ViewBag.IdCliente = new SelectList(db.CLIENTEs, "IdCliente", "Nombre", mOVIMIENTO.IdCliente);
+            ViewBag.IdDocumento = new SelectList(db.DOCUMENTOes, "IdDocumento", "Descripcion", mOVIMIENTO.IdDocumento);
+            ViewBag.IdEmpleado = new SelectList(db.EMPLEADOes, "IdEmpleado", "Nombre", mOVIMIENTO.IdEmpleado);
             ViewBag.IdFormaPago = new SelectList(db.FORMA_PAGO, "IdFormaPago", "Descripcion", mOVIMIENTO.IdFormaPago);
-            ViewBag.IdServicio = new SelectList(db.SERVICIO, "IdServicio", "Descripcion", mOVIMIENTO.IdServicio);
+            ViewBag.IdServicio = new SelectList(db.SERVICIOs, "IdServicio", "Descripcion", mOVIMIENTO.IdServicio);
             return View(mOVIMIENTO);
         }
 
@@ -76,16 +76,16 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MOVIMIENTO mOVIMIENTO = db.MOVIMIENTO.Find(id);
+            MOVIMIENTO mOVIMIENTO = db.MOVIMIENTOes.Find(id);
             if (mOVIMIENTO == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCliente = new SelectList(db.CLIENTE, "IdCliente", "Nombre", mOVIMIENTO.IdCliente);
-            ViewBag.IdDocumento = new SelectList(db.DOCUMENTO, "IdDocumento", "Descripcion", mOVIMIENTO.IdDocumento);
-            ViewBag.IdEmpleado = new SelectList(db.EMPLEADO, "IdEmpleado", "Nombre", mOVIMIENTO.IdEmpleado);
+            ViewBag.IdCliente = new SelectList(db.CLIENTEs, "IdCliente", "Nombre", mOVIMIENTO.IdCliente);
+            ViewBag.IdDocumento = new SelectList(db.DOCUMENTOes, "IdDocumento", "Descripcion", mOVIMIENTO.IdDocumento);
+            ViewBag.IdEmpleado = new SelectList(db.EMPLEADOes, "IdEmpleado", "Nombre", mOVIMIENTO.IdEmpleado);
             ViewBag.IdFormaPago = new SelectList(db.FORMA_PAGO, "IdFormaPago", "Descripcion", mOVIMIENTO.IdFormaPago);
-            ViewBag.IdServicio = new SelectList(db.SERVICIO, "IdServicio", "Descripcion", mOVIMIENTO.IdServicio);
+            ViewBag.IdServicio = new SelectList(db.SERVICIOs, "IdServicio", "Descripcion", mOVIMIENTO.IdServicio);
             return View(mOVIMIENTO);
         }
 
@@ -102,11 +102,11 @@ namespace Caja_Unapec.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdCliente = new SelectList(db.CLIENTE, "IdCliente", "Nombre", mOVIMIENTO.IdCliente);
-            ViewBag.IdDocumento = new SelectList(db.DOCUMENTO, "IdDocumento", "Descripcion", mOVIMIENTO.IdDocumento);
-            ViewBag.IdEmpleado = new SelectList(db.EMPLEADO, "IdEmpleado", "Nombre", mOVIMIENTO.IdEmpleado);
+            ViewBag.IdCliente = new SelectList(db.CLIENTEs, "IdCliente", "Nombre", mOVIMIENTO.IdCliente);
+            ViewBag.IdDocumento = new SelectList(db.DOCUMENTOes, "IdDocumento", "Descripcion", mOVIMIENTO.IdDocumento);
+            ViewBag.IdEmpleado = new SelectList(db.EMPLEADOes, "IdEmpleado", "Nombre", mOVIMIENTO.IdEmpleado);
             ViewBag.IdFormaPago = new SelectList(db.FORMA_PAGO, "IdFormaPago", "Descripcion", mOVIMIENTO.IdFormaPago);
-            ViewBag.IdServicio = new SelectList(db.SERVICIO, "IdServicio", "Descripcion", mOVIMIENTO.IdServicio);
+            ViewBag.IdServicio = new SelectList(db.SERVICIOs, "IdServicio", "Descripcion", mOVIMIENTO.IdServicio);
             return View(mOVIMIENTO);
         }
 
@@ -117,7 +117,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MOVIMIENTO mOVIMIENTO = db.MOVIMIENTO.Find(id);
+            MOVIMIENTO mOVIMIENTO = db.MOVIMIENTOes.Find(id);
             if (mOVIMIENTO == null)
             {
                 return HttpNotFound();
@@ -130,8 +130,8 @@ namespace Caja_Unapec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MOVIMIENTO mOVIMIENTO = db.MOVIMIENTO.Find(id);
-            db.MOVIMIENTO.Remove(mOVIMIENTO);
+            MOVIMIENTO mOVIMIENTO = db.MOVIMIENTOes.Find(id);
+            db.MOVIMIENTOes.Remove(mOVIMIENTO);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

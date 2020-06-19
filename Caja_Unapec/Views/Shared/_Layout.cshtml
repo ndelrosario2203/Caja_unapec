@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Caja UNAPEC</title>
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -18,23 +18,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Caja UNAPEC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Clientes", "Index", "CLIENTE")</li>
-                    <li>@Html.ActionLink("Empleados", "Index", "EMPLEADO")</li>
-                    <li>@Html.ActionLink("Movimientos", "Index", "MOVIMIENTO")</li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mas opciones <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Carreras", "Index", "CARRERA")</li>
-                            <li>@Html.ActionLink("Formas de Pago", "Index", "FORMA_PAGO")</li>
-                            <li>@Html.ActionLink("Servicios Facturables", "Index", "SERVICIO")</li>
-                            <li>@Html.ActionLink("Tandas Laborables", "Index", "TANDA")</li>
-                            <li>@Html.ActionLink("Tipo de Personal", "Index", "TIPO_PERSONA")</li>
-                        </ul>
-                    </li>
+                  
+                    <li>@Html.ActionLink("CARRERA", "Index", "CARRERA")</li>
+                    <li>@Html.ActionLink("CLIENTE", "Index", "CLIENTE")</li>
+                    <li>@Html.ActionLink("DOCUMENTO", "Index", "DOCUMENTO")</li>
+                    <li>@Html.ActionLink("EMPLEADO", "Index", "EMPLEADO")</li>
+                    <li>@Html.ActionLink("FORMA_PAGO", "Index", "FORMA_PAGO")</li>
+                    <li>@Html.ActionLink("MODALIDAD_PAGO", "Index", "MODALIDAD_PAGO")</li>
+                    <li>@Html.ActionLink("MOVIMIENTO", "Index", "MOVIMIENTO")</li>
+                    <li>@Html.ActionLink("SERVICIO", "Index", "SERVICIO")</li>
+                    <li>@Html.ActionLink("TANDA", "Index", "TANDA")</li>
+                    <li>@Html.ActionLink("TIPO_PERSONA", "Index", "TIPO_PERSONA")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -44,7 +42,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Caja UNAPEC</p>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
         </footer>
     </div>
 

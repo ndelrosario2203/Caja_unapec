@@ -17,7 +17,7 @@ namespace Caja_Unapec
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DOCUMENTO()
         {
-            this.MOVIMIENTO = new HashSet<MOVIMIENTO>();
+            this.MOVIMIENTOes = new HashSet<MOVIMIENTO>();
         }
     
         public int IdDocumento { get; set; }
@@ -25,6 +25,6 @@ namespace Caja_Unapec
         public bool Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MOVIMIENTO> MOVIMIENTO { get; set; }
+        public virtual ICollection<MOVIMIENTO> MOVIMIENTOes { get; set; }
     }
 }

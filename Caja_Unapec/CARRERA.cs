@@ -17,7 +17,7 @@ namespace Caja_Unapec
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CARRERA()
         {
-            this.CLIENTE = new HashSet<CLIENTE>();
+            this.CLIENTEs = new HashSet<CLIENTE>();
         }
     
         public int IdCarrera { get; set; }
@@ -25,6 +25,6 @@ namespace Caja_Unapec
         public bool Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CLIENTE> CLIENTE { get; set; }
+        public virtual ICollection<CLIENTE> CLIENTEs { get; set; }
     }
 }

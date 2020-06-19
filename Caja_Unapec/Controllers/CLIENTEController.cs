@@ -17,8 +17,8 @@ namespace Caja_Unapec.Controllers
         // GET: CLIENTE
         public ActionResult Index()
         {
-            var cLIENTE = db.CLIENTE.Include(c => c.CARRERA).Include(c => c.TIPO_PERSONA);
-            return View(cLIENTE.ToList());
+            var cLIENTEs = db.CLIENTEs.Include(c => c.CARRERA).Include(c => c.TIPO_PERSONA);
+            return View(cLIENTEs.ToList());
         }
 
         // GET: CLIENTE/Details/5
@@ -28,7 +28,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CLIENTE cLIENTE = db.CLIENTE.Find(id);
+            CLIENTE cLIENTE = db.CLIENTEs.Find(id);
             if (cLIENTE == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace Caja_Unapec.Controllers
         // GET: CLIENTE/Create
         public ActionResult Create()
         {
-            ViewBag.IdCarrera = new SelectList(db.CARRERA, "IdCarrera", "Nombre");
+            ViewBag.IdCarrera = new SelectList(db.CARRERAs, "IdCarrera", "Nombre");
             ViewBag.IdTipoPersona = new SelectList(db.TIPO_PERSONA, "IdTipoPersona", "Nombre");
             return View();
         }
@@ -53,12 +53,12 @@ namespace Caja_Unapec.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CLIENTE.Add(cLIENTE);
+                db.CLIENTEs.Add(cLIENTE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdCarrera = new SelectList(db.CARRERA, "IdCarrera", "Nombre", cLIENTE.IdCarrera);
+            ViewBag.IdCarrera = new SelectList(db.CARRERAs, "IdCarrera", "Nombre", cLIENTE.IdCarrera);
             ViewBag.IdTipoPersona = new SelectList(db.TIPO_PERSONA, "IdTipoPersona", "Nombre", cLIENTE.IdTipoPersona);
             return View(cLIENTE);
         }
@@ -70,12 +70,12 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CLIENTE cLIENTE = db.CLIENTE.Find(id);
+            CLIENTE cLIENTE = db.CLIENTEs.Find(id);
             if (cLIENTE == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCarrera = new SelectList(db.CARRERA, "IdCarrera", "Nombre", cLIENTE.IdCarrera);
+            ViewBag.IdCarrera = new SelectList(db.CARRERAs, "IdCarrera", "Nombre", cLIENTE.IdCarrera);
             ViewBag.IdTipoPersona = new SelectList(db.TIPO_PERSONA, "IdTipoPersona", "Nombre", cLIENTE.IdTipoPersona);
             return View(cLIENTE);
         }
@@ -93,7 +93,7 @@ namespace Caja_Unapec.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdCarrera = new SelectList(db.CARRERA, "IdCarrera", "Nombre", cLIENTE.IdCarrera);
+            ViewBag.IdCarrera = new SelectList(db.CARRERAs, "IdCarrera", "Nombre", cLIENTE.IdCarrera);
             ViewBag.IdTipoPersona = new SelectList(db.TIPO_PERSONA, "IdTipoPersona", "Nombre", cLIENTE.IdTipoPersona);
             return View(cLIENTE);
         }
@@ -105,7 +105,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CLIENTE cLIENTE = db.CLIENTE.Find(id);
+            CLIENTE cLIENTE = db.CLIENTEs.Find(id);
             if (cLIENTE == null)
             {
                 return HttpNotFound();
@@ -118,8 +118,8 @@ namespace Caja_Unapec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CLIENTE cLIENTE = db.CLIENTE.Find(id);
-            db.CLIENTE.Remove(cLIENTE);
+            CLIENTE cLIENTE = db.CLIENTEs.Find(id);
+            db.CLIENTEs.Remove(cLIENTE);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

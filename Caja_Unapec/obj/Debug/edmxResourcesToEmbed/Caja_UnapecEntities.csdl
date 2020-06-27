@@ -37,7 +37,11 @@
     </Key>
     <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+<<<<<<< HEAD
     <Property Name="Cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+=======
+    <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+>>>>>>> c6b595644dbb28fad2a20985a0d3ce2aaff00cfd
     <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Estado" Type="Boolean" Nullable="false" />
     <Property Name="IdTanda" Type="Int32" Nullable="false" />

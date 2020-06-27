@@ -32,7 +32,11 @@
     </Key>
     <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+<<<<<<< HEAD
     <Property Name="Cedula" Type="varchar" MaxLength="13" Nullable="false" />
+=======
+    <Property Name="Cedula" Type="varchar" MaxLength="50" Nullable="false" />
+>>>>>>> c6b595644dbb28fad2a20985a0d3ce2aaff00cfd
     <Property Name="Fecha_Ingreso" Type="datetime" Nullable="false" />
     <Property Name="Estado" Type="bit" Nullable="false" />
     <Property Name="IdTanda" Type="int" Nullable="false" />

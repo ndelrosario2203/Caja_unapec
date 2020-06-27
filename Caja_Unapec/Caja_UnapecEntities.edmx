@@ -1,0 +1,657 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Caja_Unapec.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CARRERA">
+          <Key>
+            <PropertyRef Name="IdCarrera" />
+          </Key>
+          <Property Name="IdCarrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="IdTipoPersona" Type="int" Nullable="false" />
+          <Property Name="IdCarrera" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO">
+          <Key>
+            <PropertyRef Name="IdDocumento" />
+          </Key>
+          <Property Name="IdDocumento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Fecha_Ingreso" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="IdTanda" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FORMA_PAGO">
+          <Key>
+            <PropertyRef Name="IdFormaPago" />
+          </Key>
+          <Property Name="IdFormaPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="IdModalidadPago" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MODALIDAD_PAGO">
+          <Key>
+            <PropertyRef Name="IdModalidadPago" />
+          </Key>
+          <Property Name="IdModalidadPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MOVIMIENTO">
+          <Key>
+            <PropertyRef Name="IdMovimiento" />
+          </Key>
+          <Property Name="IdMovimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Monto" Type="float" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="IdServicio" Type="int" Nullable="false" />
+          <Property Name="IdDocumento" Type="int" Nullable="false" />
+          <Property Name="IdEmpleado" Type="int" Nullable="false" />
+          <Property Name="IdFormaPago" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERVICIO">
+          <Key>
+            <PropertyRef Name="IdServicio" />
+          </Key>
+          <Property Name="IdServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TANDA">
+          <Key>
+            <PropertyRef Name="IdTanda" />
+          </Key>
+          <Property Name="IdTanda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_PERSONA">
+          <Key>
+            <PropertyRef Name="IdTipoPersona" />
+          </Key>
+          <Property Name="IdTipoPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CLIENTE_CARRERA">
+          <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARRERA">
+              <PropertyRef Name="IdCarrera" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="IdCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_TIPO_PERSONA">
+          <End Role="TIPO_PERSONA" Type="Self.TIPO_PERSONA" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_PERSONA">
+              <PropertyRef Name="IdTipoPersona" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="IdTipoPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_TANDA">
+          <End Role="TANDA" Type="Self.TANDA" Multiplicity="1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TANDA">
+              <PropertyRef Name="IdTanda" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="IdTanda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FORMA_PAGO_MODALIDAD_PAGO">
+          <End Role="MODALIDAD_PAGO" Type="Self.MODALIDAD_PAGO" Multiplicity="1" />
+          <End Role="FORMA_PAGO" Type="Self.FORMA_PAGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODALIDAD_PAGO">
+              <PropertyRef Name="IdModalidadPago" />
+            </Principal>
+            <Dependent Role="FORMA_PAGO">
+              <PropertyRef Name="IdModalidadPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_DOCUMENTO">
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="1" />
+          <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="IdDocumento" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO">
+              <PropertyRef Name="IdDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_EMPLEADO">
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+          <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_FORMA_PAGO">
+          <End Role="FORMA_PAGO" Type="Self.FORMA_PAGO" Multiplicity="1" />
+          <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMA_PAGO">
+              <PropertyRef Name="IdFormaPago" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO">
+              <PropertyRef Name="IdFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_SERVICIO">
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="IdServicio" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO">
+              <PropertyRef Name="IdServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Caja_UnapecStoreContainer">
+          <EntitySet Name="CARRERA" EntityType="Self.CARRERA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCUMENTO" EntityType="Self.DOCUMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FORMA_PAGO" EntityType="Self.FORMA_PAGO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MODALIDAD_PAGO" EntityType="Self.MODALIDAD_PAGO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MOVIMIENTO" EntityType="Self.MOVIMIENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVICIO" EntityType="Self.SERVICIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TANDA" EntityType="Self.TANDA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_PERSONA" EntityType="Self.TIPO_PERSONA" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CLIENTE_CARRERA" Association="Self.FK_CLIENTE_CARRERA">
+            <End Role="CARRERA" EntitySet="CARRERA" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_TIPO_PERSONA" Association="Self.FK_CLIENTE_TIPO_PERSONA">
+            <End Role="TIPO_PERSONA" EntitySet="TIPO_PERSONA" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_TANDA" Association="Self.FK_EMPLEADO_TANDA">
+            <End Role="TANDA" EntitySet="TANDA" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FORMA_PAGO_MODALIDAD_PAGO" Association="Self.FK_FORMA_PAGO_MODALIDAD_PAGO">
+            <End Role="MODALIDAD_PAGO" EntitySet="MODALIDAD_PAGO" />
+            <End Role="FORMA_PAGO" EntitySet="FORMA_PAGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_CLIENTE" Association="Self.FK_MOVIMIENTO_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_DOCUMENTO" Association="Self.FK_MOVIMIENTO_DOCUMENTO">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
+            <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_EMPLEADO" Association="Self.FK_MOVIMIENTO_EMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_FORMA_PAGO" Association="Self.FK_MOVIMIENTO_FORMA_PAGO">
+            <End Role="FORMA_PAGO" EntitySet="FORMA_PAGO" />
+            <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_SERVICIO" Association="Self.FK_MOVIMIENTO_SERVICIO">
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Caja_Unapec" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CARRERA">
+          <Key>
+            <PropertyRef Name="IdCarrera" />
+          </Key>
+          <Property Name="IdCarrera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CLIENTEs" Relationship="Self.FK_CLIENTE_CARRERA" FromRole="CARRERA" ToRole="CLIENTE" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="IdTipoPersona" Type="Int32" Nullable="false" />
+          <Property Name="IdCarrera" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CARRERA" Relationship="Self.FK_CLIENTE_CARRERA" FromRole="CLIENTE" ToRole="CARRERA" />
+          <NavigationProperty Name="TIPO_PERSONA" Relationship="Self.FK_CLIENTE_TIPO_PERSONA" FromRole="CLIENTE" ToRole="TIPO_PERSONA" />
+          <NavigationProperty Name="MOVIMIENTOes" Relationship="Self.FK_MOVIMIENTO_CLIENTE" FromRole="CLIENTE" ToRole="MOVIMIENTO" />
+        </EntityType>
+        <EntityType Name="DOCUMENTO">
+          <Key>
+            <PropertyRef Name="IdDocumento" />
+          </Key>
+          <Property Name="IdDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MOVIMIENTOes" Relationship="Self.FK_MOVIMIENTO_DOCUMENTO" FromRole="DOCUMENTO" ToRole="MOVIMIENTO" />
+        </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="IdTanda" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TANDA" Relationship="Self.FK_EMPLEADO_TANDA" FromRole="EMPLEADO" ToRole="TANDA" />
+          <NavigationProperty Name="MOVIMIENTOes" Relationship="Self.FK_MOVIMIENTO_EMPLEADO" FromRole="EMPLEADO" ToRole="MOVIMIENTO" />
+        </EntityType>
+        <EntityType Name="FORMA_PAGO">
+          <Key>
+            <PropertyRef Name="IdFormaPago" />
+          </Key>
+          <Property Name="IdFormaPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="IdModalidadPago" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MODALIDAD_PAGO" Relationship="Self.FK_FORMA_PAGO_MODALIDAD_PAGO" FromRole="FORMA_PAGO" ToRole="MODALIDAD_PAGO" />
+          <NavigationProperty Name="MOVIMIENTOes" Relationship="Self.FK_MOVIMIENTO_FORMA_PAGO" FromRole="FORMA_PAGO" ToRole="MOVIMIENTO" />
+        </EntityType>
+        <EntityType Name="MODALIDAD_PAGO">
+          <Key>
+            <PropertyRef Name="IdModalidadPago" />
+          </Key>
+          <Property Name="IdModalidadPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FORMA_PAGO" Relationship="Self.FK_FORMA_PAGO_MODALIDAD_PAGO" FromRole="MODALIDAD_PAGO" ToRole="FORMA_PAGO" />
+        </EntityType>
+        <EntityType Name="MOVIMIENTO">
+          <Key>
+            <PropertyRef Name="IdMovimiento" />
+          </Key>
+          <Property Name="IdMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Monto" Type="Double" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdServicio" Type="Int32" Nullable="false" />
+          <Property Name="IdDocumento" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="IdFormaPago" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.FK_MOVIMIENTO_CLIENTE" FromRole="MOVIMIENTO" ToRole="CLIENTE" />
+          <NavigationProperty Name="DOCUMENTO" Relationship="Self.FK_MOVIMIENTO_DOCUMENTO" FromRole="MOVIMIENTO" ToRole="DOCUMENTO" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK_MOVIMIENTO_EMPLEADO" FromRole="MOVIMIENTO" ToRole="EMPLEADO" />
+          <NavigationProperty Name="FORMA_PAGO" Relationship="Self.FK_MOVIMIENTO_FORMA_PAGO" FromRole="MOVIMIENTO" ToRole="FORMA_PAGO" />
+          <NavigationProperty Name="SERVICIO" Relationship="Self.FK_MOVIMIENTO_SERVICIO" FromRole="MOVIMIENTO" ToRole="SERVICIO" />
+        </EntityType>
+        <EntityType Name="SERVICIO">
+          <Key>
+            <PropertyRef Name="IdServicio" />
+          </Key>
+          <Property Name="IdServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MOVIMIENTOes" Relationship="Self.FK_MOVIMIENTO_SERVICIO" FromRole="SERVICIO" ToRole="MOVIMIENTO" />
+        </EntityType>
+        <EntityType Name="TANDA">
+          <Key>
+            <PropertyRef Name="IdTanda" />
+          </Key>
+          <Property Name="IdTanda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EMPLEADOes" Relationship="Self.FK_EMPLEADO_TANDA" FromRole="TANDA" ToRole="EMPLEADO" />
+        </EntityType>
+        <EntityType Name="TIPO_PERSONA">
+          <Key>
+            <PropertyRef Name="IdTipoPersona" />
+          </Key>
+          <Property Name="IdTipoPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CLIENTEs" Relationship="Self.FK_CLIENTE_TIPO_PERSONA" FromRole="TIPO_PERSONA" ToRole="CLIENTE" />
+        </EntityType>
+        <Association Name="FK_CLIENTE_CARRERA">
+          <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARRERA">
+              <PropertyRef Name="IdCarrera" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="IdCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_TIPO_PERSONA">
+          <End Role="TIPO_PERSONA" Type="Self.TIPO_PERSONA" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_PERSONA">
+              <PropertyRef Name="IdTipoPersona" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="IdTipoPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_DOCUMENTO">
+          <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="1" />
+          <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTO">
+              <PropertyRef Name="IdDocumento" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO">
+              <PropertyRef Name="IdDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_TANDA">
+          <End Role="TANDA" Type="Self.TANDA" Multiplicity="1" />
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TANDA">
+              <PropertyRef Name="IdTanda" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="IdTanda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_EMPLEADO">
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+          <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FORMA_PAGO_MODALIDAD_PAGO">
+          <End Role="MODALIDAD_PAGO" Type="Self.MODALIDAD_PAGO" Multiplicity="1" />
+          <End Role="FORMA_PAGO" Type="Self.FORMA_PAGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODALIDAD_PAGO">
+              <PropertyRef Name="IdModalidadPago" />
+            </Principal>
+            <Dependent Role="FORMA_PAGO">
+              <PropertyRef Name="IdModalidadPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_FORMA_PAGO">
+          <End Role="FORMA_PAGO" Type="Self.FORMA_PAGO" Multiplicity="1" />
+          <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMA_PAGO">
+              <PropertyRef Name="IdFormaPago" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO">
+              <PropertyRef Name="IdFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MOVIMIENTO_SERVICIO">
+          <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
+          <End Role="MOVIMIENTO" Type="Self.MOVIMIENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICIO">
+              <PropertyRef Name="IdServicio" />
+            </Principal>
+            <Dependent Role="MOVIMIENTO">
+              <PropertyRef Name="IdServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Caja_UnapecEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CARRERAs" EntityType="Self.CARRERA" />
+          <EntitySet Name="CLIENTEs" EntityType="Self.CLIENTE" />
+          <EntitySet Name="DOCUMENTOes" EntityType="Self.DOCUMENTO" />
+          <EntitySet Name="EMPLEADOes" EntityType="Self.EMPLEADO" />
+          <EntitySet Name="FORMA_PAGO" EntityType="Self.FORMA_PAGO" />
+          <EntitySet Name="MODALIDAD_PAGO" EntityType="Self.MODALIDAD_PAGO" />
+          <EntitySet Name="MOVIMIENTOes" EntityType="Self.MOVIMIENTO" />
+          <EntitySet Name="SERVICIOs" EntityType="Self.SERVICIO" />
+          <EntitySet Name="TANDAs" EntityType="Self.TANDA" />
+          <EntitySet Name="TIPO_PERSONA" EntityType="Self.TIPO_PERSONA" />
+          <AssociationSet Name="FK_CLIENTE_CARRERA" Association="Self.FK_CLIENTE_CARRERA">
+            <End Role="CARRERA" EntitySet="CARRERAs" />
+            <End Role="CLIENTE" EntitySet="CLIENTEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_TIPO_PERSONA" Association="Self.FK_CLIENTE_TIPO_PERSONA">
+            <End Role="TIPO_PERSONA" EntitySet="TIPO_PERSONA" />
+            <End Role="CLIENTE" EntitySet="CLIENTEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_CLIENTE" Association="Self.FK_MOVIMIENTO_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTEs" />
+            <End Role="MOVIMIENTO" EntitySet="MOVIMIENTOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_DOCUMENTO" Association="Self.FK_MOVIMIENTO_DOCUMENTO">
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
+            <End Role="MOVIMIENTO" EntitySet="MOVIMIENTOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_TANDA" Association="Self.FK_EMPLEADO_TANDA">
+            <End Role="TANDA" EntitySet="TANDAs" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_EMPLEADO" Association="Self.FK_MOVIMIENTO_EMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADOes" />
+            <End Role="MOVIMIENTO" EntitySet="MOVIMIENTOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FORMA_PAGO_MODALIDAD_PAGO" Association="Self.FK_FORMA_PAGO_MODALIDAD_PAGO">
+            <End Role="MODALIDAD_PAGO" EntitySet="MODALIDAD_PAGO" />
+            <End Role="FORMA_PAGO" EntitySet="FORMA_PAGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_FORMA_PAGO" Association="Self.FK_MOVIMIENTO_FORMA_PAGO">
+            <End Role="FORMA_PAGO" EntitySet="FORMA_PAGO" />
+            <End Role="MOVIMIENTO" EntitySet="MOVIMIENTOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MOVIMIENTO_SERVICIO" Association="Self.FK_MOVIMIENTO_SERVICIO">
+            <End Role="SERVICIO" EntitySet="SERVICIOs" />
+            <End Role="MOVIMIENTO" EntitySet="MOVIMIENTOes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Caja_UnapecStoreContainer" CdmEntityContainer="Caja_UnapecEntities">
+          <EntitySetMapping Name="CARRERAs">
+            <EntityTypeMapping TypeName="Caja_Unapec.CARRERA">
+              <MappingFragment StoreEntitySet="CARRERA">
+                <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTEs">
+            <EntityTypeMapping TypeName="Caja_Unapec.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
+                <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCUMENTOes">
+            <EntityTypeMapping TypeName="Caja_Unapec.DOCUMENTO">
+              <MappingFragment StoreEntitySet="DOCUMENTO">
+                <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADOes">
+            <EntityTypeMapping TypeName="Caja_Unapec.EMPLEADO">
+              <MappingFragment StoreEntitySet="EMPLEADO">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdTanda" ColumnName="IdTanda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FORMA_PAGO">
+            <EntityTypeMapping TypeName="Caja_Unapec.FORMA_PAGO">
+              <MappingFragment StoreEntitySet="FORMA_PAGO">
+                <ScalarProperty Name="IdFormaPago" ColumnName="IdFormaPago" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdModalidadPago" ColumnName="IdModalidadPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MODALIDAD_PAGO">
+            <EntityTypeMapping TypeName="Caja_Unapec.MODALIDAD_PAGO">
+              <MappingFragment StoreEntitySet="MODALIDAD_PAGO">
+                <ScalarProperty Name="IdModalidadPago" ColumnName="IdModalidadPago" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MOVIMIENTOes">
+            <EntityTypeMapping TypeName="Caja_Unapec.MOVIMIENTO">
+              <MappingFragment StoreEntitySet="MOVIMIENTO">
+                <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+                <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="IdFormaPago" ColumnName="IdFormaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICIOs">
+            <EntityTypeMapping TypeName="Caja_Unapec.SERVICIO">
+              <MappingFragment StoreEntitySet="SERVICIO">
+                <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TANDAs">
+            <EntityTypeMapping TypeName="Caja_Unapec.TANDA">
+              <MappingFragment StoreEntitySet="TANDA">
+                <ScalarProperty Name="IdTanda" ColumnName="IdTanda" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_PERSONA">
+            <EntityTypeMapping TypeName="Caja_Unapec.TIPO_PERSONA">
+              <MappingFragment StoreEntitySet="TIPO_PERSONA">
+                <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

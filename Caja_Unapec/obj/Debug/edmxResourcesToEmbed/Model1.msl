@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Caja_UnapecModelStoreContainer" CdmEntityContainer="Caja_UnapecEntities">
-    <EntitySetMapping Name="CARRERA">
-      <EntityTypeMapping TypeName="Caja_UnapecModel.CARRERA">
+  <EntityContainerMapping StorageEntityContainer="Caja_UnapecStoreContainer" CdmEntityContainer="Caja_UnapecEntities1">
+    <EntitySetMapping Name="CARRERAs">
+      <EntityTypeMapping TypeName="Caja_Unapec.CARRERA">
         <MappingFragment StoreEntitySet="CARRERA">
           <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -10,8 +10,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CLIENTE">
-      <EntityTypeMapping TypeName="Caja_UnapecModel.CLIENTE">
+    <EntitySetMapping Name="CLIENTEs">
+      <EntityTypeMapping TypeName="Caja_Unapec.CLIENTE">
         <MappingFragment StoreEntitySet="CLIENTE">
           <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -21,8 +21,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DOCUMENTO">
-      <EntityTypeMapping TypeName="Caja_UnapecModel.DOCUMENTO">
+    <EntitySetMapping Name="DOCUMENTOes">
+      <EntityTypeMapping TypeName="Caja_Unapec.DOCUMENTO">
         <MappingFragment StoreEntitySet="DOCUMENTO">
           <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -30,8 +30,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EMPLEADO">
-      <EntityTypeMapping TypeName="Caja_UnapecModel.EMPLEADO">
+    <EntitySetMapping Name="EMPLEADOes">
+      <EntityTypeMapping TypeName="Caja_Unapec.EMPLEADO">
         <MappingFragment StoreEntitySet="EMPLEADO">
           <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -43,7 +43,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="FORMA_PAGO">
-      <EntityTypeMapping TypeName="Caja_UnapecModel.FORMA_PAGO">
+      <EntityTypeMapping TypeName="Caja_Unapec.FORMA_PAGO">
         <MappingFragment StoreEntitySet="FORMA_PAGO">
           <ScalarProperty Name="IdFormaPago" ColumnName="IdFormaPago" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -53,7 +53,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MODALIDAD_PAGO">
-      <EntityTypeMapping TypeName="Caja_UnapecModel.MODALIDAD_PAGO">
+      <EntityTypeMapping TypeName="Caja_Unapec.MODALIDAD_PAGO">
         <MappingFragment StoreEntitySet="MODALIDAD_PAGO">
           <ScalarProperty Name="IdModalidadPago" ColumnName="IdModalidadPago" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -61,8 +61,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MOVIMIENTO">
-      <EntityTypeMapping TypeName="Caja_UnapecModel.MOVIMIENTO">
+    <EntitySetMapping Name="MOVIMIENTOes">
+      <EntityTypeMapping TypeName="Caja_Unapec.MOVIMIENTO">
         <MappingFragment StoreEntitySet="MOVIMIENTO">
           <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
@@ -76,8 +76,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SERVICIO">
-      <EntityTypeMapping TypeName="Caja_UnapecModel.SERVICIO">
+    <EntitySetMapping Name="SERVICIOs">
+      <EntityTypeMapping TypeName="Caja_Unapec.SERVICIO">
         <MappingFragment StoreEntitySet="SERVICIO">
           <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -85,8 +85,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TANDA">
-      <EntityTypeMapping TypeName="Caja_UnapecModel.TANDA">
+    <EntitySetMapping Name="TANDAs">
+      <EntityTypeMapping TypeName="Caja_Unapec.TANDA">
         <MappingFragment StoreEntitySet="TANDA">
           <ScalarProperty Name="IdTanda" ColumnName="IdTanda" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -95,7 +95,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TIPO_PERSONA">
-      <EntityTypeMapping TypeName="Caja_UnapecModel.TIPO_PERSONA">
+      <EntityTypeMapping TypeName="Caja_Unapec.TIPO_PERSONA">
         <MappingFragment StoreEntitySet="TIPO_PERSONA">
           <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />

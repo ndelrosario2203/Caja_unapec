@@ -17,7 +17,7 @@ namespace Caja_Unapec
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FORMA_PAGO()
         {
-            this.MOVIMIENTO = new HashSet<MOVIMIENTO>();
+            this.MOVIMIENTOes = new HashSet<MOVIMIENTO>();
         }
     
         public int IdFormaPago { get; set; }
@@ -27,6 +27,6 @@ namespace Caja_Unapec
     
         public virtual MODALIDAD_PAGO MODALIDAD_PAGO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MOVIMIENTO> MOVIMIENTO { get; set; }
+        public virtual ICollection<MOVIMIENTO> MOVIMIENTOes { get; set; }
     }
 }

@@ -17,8 +17,8 @@ namespace Caja_Unapec.Controllers
         // GET: EMPLEADO
         public ActionResult Index()
         {
-            var eMPLEADO = db.EMPLEADO.Include(e => e.TANDA);
-            return View(eMPLEADO.ToList());
+            var eMPLEADOes = db.EMPLEADOes.Include(e => e.TANDA);
+            return View(eMPLEADOes.ToList());
         }
 
         // GET: EMPLEADO/Details/5
@@ -28,7 +28,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EMPLEADO eMPLEADO = db.EMPLEADO.Find(id);
+            EMPLEADO eMPLEADO = db.EMPLEADOes.Find(id);
             if (eMPLEADO == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace Caja_Unapec.Controllers
         // GET: EMPLEADO/Create
         public ActionResult Create()
         {
-            ViewBag.IdTanda = new SelectList(db.TANDA, "IdTanda", "Nombre");
+            ViewBag.IdTanda = new SelectList(db.TANDAs, "IdTanda", "Nombre");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace Caja_Unapec.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.EMPLEADO.Add(eMPLEADO);
+                db.EMPLEADOes.Add(eMPLEADO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdTanda = new SelectList(db.TANDA, "IdTanda", "Nombre", eMPLEADO.IdTanda);
+            ViewBag.IdTanda = new SelectList(db.TANDAs, "IdTanda", "Nombre", eMPLEADO.IdTanda);
             return View(eMPLEADO);
         }
 
@@ -68,12 +68,12 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EMPLEADO eMPLEADO = db.EMPLEADO.Find(id);
+            EMPLEADO eMPLEADO = db.EMPLEADOes.Find(id);
             if (eMPLEADO == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdTanda = new SelectList(db.TANDA, "IdTanda", "Nombre", eMPLEADO.IdTanda);
+            ViewBag.IdTanda = new SelectList(db.TANDAs, "IdTanda", "Nombre", eMPLEADO.IdTanda);
             return View(eMPLEADO);
         }
 
@@ -90,7 +90,7 @@ namespace Caja_Unapec.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdTanda = new SelectList(db.TANDA, "IdTanda", "Nombre", eMPLEADO.IdTanda);
+            ViewBag.IdTanda = new SelectList(db.TANDAs, "IdTanda", "Nombre", eMPLEADO.IdTanda);
             return View(eMPLEADO);
         }
 
@@ -101,7 +101,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EMPLEADO eMPLEADO = db.EMPLEADO.Find(id);
+            EMPLEADO eMPLEADO = db.EMPLEADOes.Find(id);
             if (eMPLEADO == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace Caja_Unapec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            EMPLEADO eMPLEADO = db.EMPLEADO.Find(id);
-            db.EMPLEADO.Remove(eMPLEADO);
+            EMPLEADO eMPLEADO = db.EMPLEADOes.Find(id);
+            db.EMPLEADOes.Remove(eMPLEADO);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

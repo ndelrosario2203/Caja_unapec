@@ -17,7 +17,7 @@ namespace Caja_Unapec.Controllers
         // GET: TANDA
         public ActionResult Index()
         {
-            return View(db.TANDA.ToList());
+            return View(db.TANDAs.ToList());
         }
 
         // GET: TANDA/Details/5
@@ -27,7 +27,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TANDA tANDA = db.TANDA.Find(id);
+            TANDA tANDA = db.TANDAs.Find(id);
             if (tANDA == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace Caja_Unapec.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.TANDA.Add(tANDA);
+                db.TANDAs.Add(tANDA);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TANDA tANDA = db.TANDA.Find(id);
+            TANDA tANDA = db.TANDAs.Find(id);
             if (tANDA == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TANDA tANDA = db.TANDA.Find(id);
+            TANDA tANDA = db.TANDAs.Find(id);
             if (tANDA == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace Caja_Unapec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TANDA tANDA = db.TANDA.Find(id);
-            db.TANDA.Remove(tANDA);
+            TANDA tANDA = db.TANDAs.Find(id);
+            db.TANDAs.Remove(tANDA);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

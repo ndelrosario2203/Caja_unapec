@@ -17,7 +17,7 @@ namespace Caja_Unapec.Controllers
         // GET: CARRERA
         public ActionResult Index()
         {
-            return View(db.CARRERA.ToList());
+            return View(db.CARRERAs.ToList());
         }
 
         // GET: CARRERA/Details/5
@@ -27,7 +27,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CARRERA cARRERA = db.CARRERA.Find(id);
+            CARRERA cARRERA = db.CARRERAs.Find(id);
             if (cARRERA == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace Caja_Unapec.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CARRERA.Add(cARRERA);
+                db.CARRERAs.Add(cARRERA);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CARRERA cARRERA = db.CARRERA.Find(id);
+            CARRERA cARRERA = db.CARRERAs.Find(id);
             if (cARRERA == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace Caja_Unapec.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CARRERA cARRERA = db.CARRERA.Find(id);
+            CARRERA cARRERA = db.CARRERAs.Find(id);
             if (cARRERA == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace Caja_Unapec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CARRERA cARRERA = db.CARRERA.Find(id);
-            db.CARRERA.Remove(cARRERA);
+            CARRERA cARRERA = db.CARRERAs.Find(id);
+            db.CARRERAs.Remove(cARRERA);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

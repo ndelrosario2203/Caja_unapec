@@ -17,7 +17,7 @@ namespace Caja_Unapec
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TANDA()
         {
-            this.EMPLEADO = new HashSet<EMPLEADO>();
+            this.EMPLEADOes = new HashSet<EMPLEADO>();
         }
     
         public int IdTanda { get; set; }
@@ -25,6 +25,6 @@ namespace Caja_Unapec
         public bool Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EMPLEADO> EMPLEADO { get; set; }
+        public virtual ICollection<EMPLEADO> EMPLEADOes { get; set; }
     }
 }

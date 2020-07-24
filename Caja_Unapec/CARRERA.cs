@@ -11,7 +11,8 @@ namespace Caja_Unapec
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CARRERA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,9 @@ namespace Caja_Unapec
         {
             this.CLIENTEs = new HashSet<CLIENTE>();
         }
-    
+        [Required]
         public int IdCarrera { get; set; }
+        [Required]
         public string Nombre { get; set; }
         public bool Estado { get; set; }
     

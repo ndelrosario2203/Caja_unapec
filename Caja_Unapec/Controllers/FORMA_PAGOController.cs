@@ -15,6 +15,7 @@ namespace Caja_Unapec.Controllers
         private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: FORMA_PAGO
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             var fORMA_PAGO = db.FORMA_PAGO.Include(f => f.MODALIDAD_PAGO);
@@ -22,6 +23,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: FORMA_PAGO/Details/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: FORMA_PAGO/Create
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             ViewBag.IdModalidadPago = new SelectList(db.MODALIDAD_PAGO, "IdModalidadPago", "Nombre");
@@ -62,6 +65,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: FORMA_PAGO/Edit/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -95,6 +99,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: FORMA_PAGO/Delete/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -15,12 +15,14 @@ namespace Caja_Unapec.Controllers
         private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: SERVICIO
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View(db.SERVICIOs.ToList());
         }
 
         // GET: SERVICIO/Details/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: SERVICIO/Create
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +62,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: SERVICIO/Edit/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +94,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: SERVICIO/Delete/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

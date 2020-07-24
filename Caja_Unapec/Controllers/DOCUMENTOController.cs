@@ -15,12 +15,15 @@ namespace Caja_Unapec.Controllers
         private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: DOCUMENTO
-        public ActionResult Index()
+        [Authorize(Roles = "Administrador")]
+        public ActionResult Index(string Criterio = null)
         {
-            return View(db.DOCUMENTOes.ToList());
+            return View(db.DOCUMENTOes.Where(p => Criterio == null ||
+            p.Descripcion.Contains(Criterio)));
         }
 
         // GET: DOCUMENTO/Details/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +39,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: DOCUMENTO/Create
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +63,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: DOCUMENTO/Edit/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +95,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: DOCUMENTO/Delete/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

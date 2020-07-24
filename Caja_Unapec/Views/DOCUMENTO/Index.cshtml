@@ -9,6 +9,11 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<form method="get">
+    <input type="text" id="Criterio" name="Criterio" />
+    <input type="submit" id="cmdBuscar" value="Buscar" />
+</form>
+
 <table class="table">
     <tr>
         <th>
@@ -20,20 +25,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdDocumento }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdDocumento }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdDocumento })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdDocumento }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdDocumento }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdDocumento })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -15,10 +15,11 @@ namespace Caja_Unapec.Controllers
         private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: EMPLEADO
-        public ActionResult Index()
+        public ActionResult Index(string Criterio = null)
         {
-            var eMPLEADOes = db.EMPLEADOes.Include(e => e.TANDA);
-            return View(eMPLEADOes.ToList());
+            return View(db.EMPLEADOes.Where(p => Criterio == null || 
+            p.Nombre.Contains(Criterio) ||
+            p.Cedula.Contains(Criterio)));
         }
 
         // GET: EMPLEADO/Details/5
@@ -50,6 +51,9 @@ namespace Caja_Unapec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdEmpleado,Nombre,Cedula,Fecha_Ingreso,Estado,IdTanda")] EMPLEADO eMPLEADO)
         {
+            if (!validaCedula(eMPLEADO.Cedula)) {
+                    ModelState.AddModelError("Cedula", "Cédula inválida.");
+            }
             if (ModelState.IsValid)
             {
                 db.EMPLEADOes.Add(eMPLEADO);
@@ -118,6 +122,30 @@ namespace Caja_Unapec.Controllers
             db.EMPLEADOes.Remove(eMPLEADO);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public static bool validaCedula(string pCedula)
+        {
+            int vnTotal = 0;
+            string vcCedula = pCedula.Replace("-", "");
+            int pLongCed = vcCedula.Trim().Length;
+            int[] digitoMult = new int[11] { 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 };
+
+            if (pLongCed < 11 || pLongCed > 11)
+                return false;
+
+            for (int vDig = 1; vDig <= pLongCed; vDig++)
+            {
+                int vCalculo = Int32.Parse(vcCedula.Substring(vDig - 1, 1)) * digitoMult[vDig - 1];
+                if (vCalculo < 10)
+                    vnTotal += vCalculo;
+                else
+                    vnTotal += Int32.Parse(vCalculo.ToString().Substring(0, 1)) + Int32.Parse(vCalculo.ToString().Substring(1, 1));
+            }
+
+            if (vnTotal % 10 == 0)
+                return true;
+            else
+                return false;
         }
 
         protected override void Dispose(bool disposing)

@@ -13,10 +13,10 @@ namespace Caja_Unapec
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Caja_UnapecEntities : DbContext
+    public partial class Caja_UnapecEntities1 : DbContext
     {
-        public Caja_UnapecEntities()
-            : base("name=Caja_UnapecEntities")
+        public Caja_UnapecEntities1()
+            : base("name=Caja_UnapecEntities1")
         {
         }
     
@@ -33,6 +33,7 @@ namespace Caja_Unapec
         public virtual DbSet<MODALIDAD_PAGO> MODALIDAD_PAGO { get; set; }
         public virtual DbSet<MOVIMIENTO> MOVIMIENTOes { get; set; }
         public virtual DbSet<SERVICIO> SERVICIOs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TANDA> TANDAs { get; set; }
         public virtual DbSet<TIPO_PERSONA> TIPO_PERSONA { get; set; }
     }

@@ -12,7 +12,7 @@ namespace Caja_Unapec.Controllers
 {
     public class FORMA_PAGOController : Controller
     {
-        private Caja_UnapecEntities db = new Caja_UnapecEntities();
+        private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: FORMA_PAGO
         public ActionResult Index()
@@ -44,8 +44,8 @@ namespace Caja_Unapec.Controllers
         }
 
         // POST: FORMA_PAGO/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdFormaPago,Descripcion,Estado,IdModalidadPago")] FORMA_PAGO fORMA_PAGO)
@@ -78,8 +78,8 @@ namespace Caja_Unapec.Controllers
         }
 
         // POST: FORMA_PAGO/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdFormaPago,Descripcion,Estado,IdModalidadPago")] FORMA_PAGO fORMA_PAGO)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\noel5\Documents\GitHub\Caja_unapec\Caja_Unapec\Caja_UnapecEntities.edmx'. 
-=======
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\noel5\source\repos\Vlastos25\Caja_unapec\Caja_Unapec\Caja_UnapecEntities.edmx'. 
->>>>>>> c6b595644dbb28fad2a20985a0d3ce2aaff00cfd
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\noel5\Documents\GitHub\Caja_unapec\Caja_Unapec\Caja_Unapec_Entities.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

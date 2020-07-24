@@ -197,26 +197,26 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Caja_UnapecEntities.Context.cs">
+    <Compile Include="Caja_Unapec_Entities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Caja_UnapecEntities.Context.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Caja_UnapecEntities.cs">
+    <Compile Include="Caja_Unapec_Entities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Caja_UnapecEntities.Designer.cs">
+    <Compile Include="Caja_Unapec_Entities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Caja_UnapecEntities.edmx</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.edmx</DependentUpon>
     </Compile>
     <Compile Include="CARRERA.cs">
-      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="CLIENTE.cs">
-      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CARRERAController.cs" />
@@ -232,48 +232,51 @@
     <Compile Include="Controllers\TANDAController.cs" />
     <Compile Include="Controllers\TIPO_PERSONAController.cs" />
     <Compile Include="DOCUMENTO.cs">
-      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="EMPLEADO.cs">
-      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="FORMA_PAGO.cs">
-      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MODALIDAD_PAGO.cs">
-      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="MOVIMIENTO.cs">
-      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SERVICIO.cs">
-      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="TANDA.cs">
-      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="TIPO_PERSONA.cs">
-      <DependentUpon>Caja_UnapecEntities.tt</DependentUpon>
+      <DependentUpon>Caja_Unapec_Entities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Caja_UnapecEntities.Context.tt">
+    <Content Include="Caja_Unapec_Entities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Caja_UnapecEntities.edmx</DependentUpon>
-      <LastGenOutput>Caja_UnapecEntities.Context.cs</LastGenOutput>
+      <DependentUpon>Caja_Unapec_Entities.edmx</DependentUpon>
+      <LastGenOutput>Caja_Unapec_Entities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Caja_UnapecEntities.tt">
+    <Content Include="Caja_Unapec_Entities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Caja_UnapecEntities.edmx</DependentUpon>
-      <LastGenOutput>Caja_UnapecEntities.cs</LastGenOutput>
+      <DependentUpon>Caja_Unapec_Entities.edmx</DependentUpon>
+      <LastGenOutput>Caja_Unapec_Entities.cs</LastGenOutput>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -288,12 +291,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Caja_UnapecEntities.edmx">
+    <EntityDeploy Include="Caja_Unapec_Entities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Caja_UnapecEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>Caja_Unapec_Entities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Caja_UnapecEntities.edmx.diagram">
-      <DependentUpon>Caja_UnapecEntities.edmx</DependentUpon>
+    <Content Include="Caja_Unapec_Entities.edmx.diagram">
+      <DependentUpon>Caja_Unapec_Entities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -375,16 +378,16 @@
     <Content Include="Views\MOVIMIENTO\Details.cshtml" />
     <Content Include="Views\MOVIMIENTO\Edit.cshtml" />
     <Content Include="Views\MOVIMIENTO\Index.cshtml" />
-    <Content Include="Views\SERVICIO\Create.cshtml" />
-    <Content Include="Views\SERVICIO\Delete.cshtml" />
-    <Content Include="Views\SERVICIO\Details.cshtml" />
-    <Content Include="Views\SERVICIO\Edit.cshtml" />
-    <Content Include="Views\SERVICIO\Index.cshtml" />
     <Content Include="Views\TANDA\Create.cshtml" />
     <Content Include="Views\TANDA\Delete.cshtml" />
     <Content Include="Views\TANDA\Details.cshtml" />
     <Content Include="Views\TANDA\Edit.cshtml" />
     <Content Include="Views\TANDA\Index.cshtml" />
+    <Content Include="Views\SERVICIO\Create.cshtml" />
+    <Content Include="Views\SERVICIO\Delete.cshtml" />
+    <Content Include="Views\SERVICIO\Details.cshtml" />
+    <Content Include="Views\SERVICIO\Edit.cshtml" />
+    <Content Include="Views\SERVICIO\Index.cshtml" />
     <Content Include="Views\TIPO_PERSONA\Create.cshtml" />
     <Content Include="Views\TIPO_PERSONA\Delete.cshtml" />
     <Content Include="Views\TIPO_PERSONA\Details.cshtml" />

@@ -12,7 +12,7 @@ namespace Caja_Unapec.Controllers
 {
     public class MOVIMIENTOController : Controller
     {
-        private Caja_UnapecEntities db = new Caja_UnapecEntities();
+        private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: MOVIMIENTO
         public ActionResult Index()
@@ -48,8 +48,8 @@ namespace Caja_Unapec.Controllers
         }
 
         // POST: MOVIMIENTO/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdMovimiento,Fecha,Monto,Estado,IdCliente,IdServicio,IdDocumento,IdEmpleado,IdFormaPago")] MOVIMIENTO mOVIMIENTO)
@@ -90,8 +90,8 @@ namespace Caja_Unapec.Controllers
         }
 
         // POST: MOVIMIENTO/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdMovimiento,Fecha,Monto,Estado,IdCliente,IdServicio,IdDocumento,IdEmpleado,IdFormaPago")] MOVIMIENTO mOVIMIENTO)

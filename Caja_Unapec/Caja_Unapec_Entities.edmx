@@ -4,11 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-<<<<<<< HEAD
-    <Schema Namespace="Caja_Unapec.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-=======
-      <Schema Namespace="Caja_Unapec.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
->>>>>>> c6b595644dbb28fad2a20985a0d3ce2aaff00cfd
+      <Schema Namespace="Caja_UnapecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CARRERA">
           <Key>
             <PropertyRef Name="IdCarrera" />
@@ -41,11 +37,7 @@
           </Key>
           <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-<<<<<<< HEAD
           <Property Name="Cedula" Type="varchar" MaxLength="13" Nullable="false" />
-=======
-          <Property Name="Cedula" Type="varchar" MaxLength="50" Nullable="false" />
->>>>>>> c6b595644dbb28fad2a20985a0d3ce2aaff00cfd
           <Property Name="Fecha_Ingreso" Type="datetime" Nullable="false" />
           <Property Name="Estado" Type="bit" Nullable="false" />
           <Property Name="IdTanda" Type="int" Nullable="false" />
@@ -88,6 +80,16 @@
           <Property Name="IdServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TANDA">
           <Key>
@@ -213,7 +215,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Caja_UnapecStoreContainer">
+        <EntityContainer Name="Caja_UnapecModelStoreContainer">
           <EntitySet Name="CARRERA" EntityType="Self.CARRERA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DOCUMENTO" EntityType="Self.DOCUMENTO" Schema="dbo" store:Type="Tables" />
@@ -222,6 +224,7 @@
           <EntitySet Name="MODALIDAD_PAGO" EntityType="Self.MODALIDAD_PAGO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MOVIMIENTO" EntityType="Self.MOVIMIENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SERVICIO" EntityType="Self.SERVICIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TANDA" EntityType="Self.TANDA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_PERSONA" EntityType="Self.TIPO_PERSONA" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CLIENTE_CARRERA" Association="Self.FK_CLIENTE_CARRERA">
@@ -261,15 +264,11 @@
             <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
           </AssociationSet>
         </EntityContainer>
-<<<<<<< HEAD
-      </Schema></edmx:StorageModels>
-=======
       </Schema>
     </edmx:StorageModels>
->>>>>>> c6b595644dbb28fad2a20985a0d3ce2aaff00cfd
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Caja_Unapec" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Caja_UnapecModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CARRERA">
           <Key>
             <PropertyRef Name="IdCarrera" />
@@ -307,11 +306,7 @@
           </Key>
           <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-<<<<<<< HEAD
           <Property Name="Cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
-=======
-          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
->>>>>>> c6b595644dbb28fad2a20985a0d3ce2aaff00cfd
           <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <Property Name="IdTanda" Type="Int32" Nullable="false" />
@@ -365,6 +360,16 @@
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="MOVIMIENTOes" Relationship="Self.FK_MOVIMIENTO_SERVICIO" FromRole="SERVICIO" ToRole="MOVIMIENTO" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TANDA">
           <Key>
@@ -492,7 +497,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Caja_UnapecEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Caja_UnapecEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CARRERAs" EntityType="Self.CARRERA" />
           <EntitySet Name="CLIENTEs" EntityType="Self.CLIENTE" />
           <EntitySet Name="DOCUMENTOes" EntityType="Self.DOCUMENTO" />
@@ -501,6 +506,7 @@
           <EntitySet Name="MODALIDAD_PAGO" EntityType="Self.MODALIDAD_PAGO" />
           <EntitySet Name="MOVIMIENTOes" EntityType="Self.MOVIMIENTO" />
           <EntitySet Name="SERVICIOs" EntityType="Self.SERVICIO" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TANDAs" EntityType="Self.TANDA" />
           <EntitySet Name="TIPO_PERSONA" EntityType="Self.TIPO_PERSONA" />
           <AssociationSet Name="FK_CLIENTE_CARRERA" Association="Self.FK_CLIENTE_CARRERA">
@@ -545,9 +551,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Caja_UnapecStoreContainer" CdmEntityContainer="Caja_UnapecEntities">
+        <EntityContainerMapping StorageEntityContainer="Caja_UnapecModelStoreContainer" CdmEntityContainer="Caja_UnapecEntities1">
           <EntitySetMapping Name="CARRERAs">
-            <EntityTypeMapping TypeName="Caja_Unapec.CARRERA">
+            <EntityTypeMapping TypeName="Caja_UnapecModel.CARRERA">
               <MappingFragment StoreEntitySet="CARRERA">
                 <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -556,7 +562,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CLIENTEs">
-            <EntityTypeMapping TypeName="Caja_Unapec.CLIENTE">
+            <EntityTypeMapping TypeName="Caja_UnapecModel.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -567,7 +573,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DOCUMENTOes">
-            <EntityTypeMapping TypeName="Caja_Unapec.DOCUMENTO">
+            <EntityTypeMapping TypeName="Caja_UnapecModel.DOCUMENTO">
               <MappingFragment StoreEntitySet="DOCUMENTO">
                 <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -576,7 +582,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EMPLEADOes">
-            <EntityTypeMapping TypeName="Caja_Unapec.EMPLEADO">
+            <EntityTypeMapping TypeName="Caja_UnapecModel.EMPLEADO">
               <MappingFragment StoreEntitySet="EMPLEADO">
                 <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -588,7 +594,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FORMA_PAGO">
-            <EntityTypeMapping TypeName="Caja_Unapec.FORMA_PAGO">
+            <EntityTypeMapping TypeName="Caja_UnapecModel.FORMA_PAGO">
               <MappingFragment StoreEntitySet="FORMA_PAGO">
                 <ScalarProperty Name="IdFormaPago" ColumnName="IdFormaPago" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -598,7 +604,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MODALIDAD_PAGO">
-            <EntityTypeMapping TypeName="Caja_Unapec.MODALIDAD_PAGO">
+            <EntityTypeMapping TypeName="Caja_UnapecModel.MODALIDAD_PAGO">
               <MappingFragment StoreEntitySet="MODALIDAD_PAGO">
                 <ScalarProperty Name="IdModalidadPago" ColumnName="IdModalidadPago" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -607,7 +613,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MOVIMIENTOes">
-            <EntityTypeMapping TypeName="Caja_Unapec.MOVIMIENTO">
+            <EntityTypeMapping TypeName="Caja_UnapecModel.MOVIMIENTO">
               <MappingFragment StoreEntitySet="MOVIMIENTO">
                 <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
@@ -622,7 +628,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SERVICIOs">
-            <EntityTypeMapping TypeName="Caja_Unapec.SERVICIO">
+            <EntityTypeMapping TypeName="Caja_UnapecModel.SERVICIO">
               <MappingFragment StoreEntitySet="SERVICIO">
                 <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -630,8 +636,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Caja_UnapecModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TANDAs">
-            <EntityTypeMapping TypeName="Caja_Unapec.TANDA">
+            <EntityTypeMapping TypeName="Caja_UnapecModel.TANDA">
               <MappingFragment StoreEntitySet="TANDA">
                 <ScalarProperty Name="IdTanda" ColumnName="IdTanda" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -640,7 +657,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_PERSONA">
-            <EntityTypeMapping TypeName="Caja_Unapec.TIPO_PERSONA">
+            <EntityTypeMapping TypeName="Caja_UnapecModel.TIPO_PERSONA">
               <MappingFragment StoreEntitySet="TIPO_PERSONA">
                 <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />

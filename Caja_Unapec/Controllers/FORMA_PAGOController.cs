@@ -15,7 +15,7 @@ namespace Caja_Unapec.Controllers
         private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: FORMA_PAGO
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Index()
         {
             var fORMA_PAGO = db.FORMA_PAGO.Include(f => f.MODALIDAD_PAGO);
@@ -23,7 +23,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: FORMA_PAGO/Details/5
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Details(int? id)
         {
             if (id == null)

@@ -15,6 +15,7 @@ namespace Caja_Unapec.Controllers
         private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: EMPLEADO
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Index(string Criterio = null)
         {
             return View(db.EMPLEADOes.Where(p => Criterio == null || 
@@ -23,6 +24,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: EMPLEADO/Details/5
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: EMPLEADO/Create
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             ViewBag.IdTanda = new SelectList(db.TANDAs, "IdTanda", "Nombre");
@@ -66,6 +69,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: EMPLEADO/Edit/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -99,6 +103,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: EMPLEADO/Delete/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

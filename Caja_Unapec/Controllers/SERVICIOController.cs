@@ -15,14 +15,14 @@ namespace Caja_Unapec.Controllers
         private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: SERVICIO
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Index()
         {
             return View(db.SERVICIOs.ToList());
         }
 
         // GET: SERVICIO/Details/5
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Details(int? id)
         {
             if (id == null)

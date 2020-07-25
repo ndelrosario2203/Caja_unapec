@@ -22,9 +22,12 @@ namespace Caja_Unapec
         }
         [Required]
         public int IdCliente { get; set; }
+        [Required]
         public string Nombre { get; set; }
         public bool Estado { get; set; }
+        [Required]
         public int IdTipoPersona { get; set; }
+        [Required]
         public int IdCarrera { get; set; }
     
         public virtual CARRERA CARRERA { get; set; }

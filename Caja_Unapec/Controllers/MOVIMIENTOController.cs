@@ -15,7 +15,7 @@ namespace Caja_Unapec.Controllers
         private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: MOVIMIENTO
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Index()
         {
             var mOVIMIENTOes = db.MOVIMIENTOes.Include(m => m.CLIENTE).Include(m => m.DOCUMENTO).Include(m => m.EMPLEADO).Include(m => m.FORMA_PAGO).Include(m => m.SERVICIO);
@@ -23,7 +23,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: MOVIMIENTO/Details/5
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Details(int? id)
         {
             if (id == null)

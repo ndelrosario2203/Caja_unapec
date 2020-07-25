@@ -15,7 +15,7 @@ namespace Caja_Unapec.Controllers
         private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: DOCUMENTO
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Index(string Criterio = null)
         {
             return View(db.DOCUMENTOes.Where(p => Criterio == null ||
@@ -23,7 +23,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: DOCUMENTO/Details/5
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Details(int? id)
         {
             if (id == null)

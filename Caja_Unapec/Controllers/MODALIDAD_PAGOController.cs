@@ -15,14 +15,14 @@ namespace Caja_Unapec.Controllers
         private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: MODALIDAD_PAGO
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Index()
         {
             return View(db.MODALIDAD_PAGO.ToList());
         }
 
         // GET: MODALIDAD_PAGO/Details/5
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Details(int? id)
         {
             if (id == null)

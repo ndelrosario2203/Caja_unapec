@@ -15,12 +15,14 @@ namespace Caja_Unapec.Controllers
         private Caja_UnapecEntities1 db = new Caja_UnapecEntities1();
 
         // GET: TANDA
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Index()
         {
             return View(db.TANDAs.ToList());
         }
 
         // GET: TANDA/Details/5
+        [Authorize(Roles = "Administrador,Consulta")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: TANDA/Create
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +62,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: TANDA/Edit/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +94,7 @@ namespace Caja_Unapec.Controllers
         }
 
         // GET: TANDA/Delete/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

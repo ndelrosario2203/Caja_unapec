@@ -11,17 +11,26 @@ namespace Caja_Unapec
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MOVIMIENTO
     {
         public int IdMovimiento { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime Fecha { get; set; }
+        [Range(1,double.MaxValue)]
         public double Monto { get; set; }
         public bool Estado { get; set; }
+        [Required]
         public int IdCliente { get; set; }
+        [Required]
         public int IdServicio { get; set; }
+        [Required]
         public int IdDocumento { get; set; }
+        [Required]
         public int IdEmpleado { get; set; }
+        [Required]
         public int IdFormaPago { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }

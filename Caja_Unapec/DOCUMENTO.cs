@@ -11,7 +11,8 @@ namespace Caja_Unapec
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DOCUMENTO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace Caja_Unapec
         }
     
         public int IdDocumento { get; set; }
+        [Required]
         public string Descripcion { get; set; }
         public bool Estado { get; set; }
     

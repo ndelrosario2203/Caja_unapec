@@ -18,17 +18,20 @@ namespace Caja_Unapec
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CLIENTE()
         {
+            this.Balance = 0D;
             this.MOVIMIENTOes = new HashSet<MOVIMIENTO>();
         }
         [Required]
         public int IdCliente { get; set; }
         [Required]
         public string Nombre { get; set; }
+
         public bool Estado { get; set; }
         [Required]
         public int IdTipoPersona { get; set; }
         [Required]
         public int IdCarrera { get; set; }
+        public double Balance { get; set; }
     
         public virtual CARRERA CARRERA { get; set; }
         public virtual TIPO_PERSONA TIPO_PERSONA { get; set; }

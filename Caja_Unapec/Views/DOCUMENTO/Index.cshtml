@@ -7,14 +7,14 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "DOCUMENTO", "Null", new { @class = "btn btn-primary btn-large" })
 </p>
 <form method="get">
     <input type="text" id="Criterio" name="Criterio" />
     <input type="submit" id="cmdBuscar" value="Buscar" />
 </form>
 
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Descripcion)
@@ -37,7 +37,8 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.IdDocumento }) |
                 @Html.ActionLink("Details", "Details", new { id = item.IdDocumento }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdDocumento })
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdDocumento }) |
+                @Html.ActionLink("Exportar a Excel", "exportaExcel")
             </td>
         </tr>
     }

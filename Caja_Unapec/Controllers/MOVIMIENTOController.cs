@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -61,6 +62,15 @@ namespace Caja_Unapec.Controllers
             {
                 db.MOVIMIENTOes.Add(mOVIMIENTO);
                 db.SaveChanges();
+                CLIENTE Cliente = (from r in db.CLIENTEs.Where
+
+                                      (a => a.IdCliente == mOVIMIENTO.IdCliente)
+
+                                          select r).FirstOrDefault();
+
+                Cliente.Balance = Cliente.Balance + mOVIMIENTO.Monto;
+                db.SaveChanges();
+                //
                 return RedirectToAction("Index");
             }
 
@@ -104,6 +114,14 @@ namespace Caja_Unapec.Controllers
             {
                 db.Entry(mOVIMIENTO).State = EntityState.Modified;
                 db.SaveChanges();
+                CLIENTE Cliente = (from r in db.CLIENTEs.Where
+
+                                      (a => a.IdCliente == mOVIMIENTO.IdCliente)
+
+                                   select r).FirstOrDefault();
+
+                Cliente.Balance = Cliente.Balance + mOVIMIENTO.Monto;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.IdCliente = new SelectList(db.CLIENTEs, "IdCliente", "Nombre", mOVIMIENTO.IdCliente);
@@ -138,6 +156,14 @@ namespace Caja_Unapec.Controllers
             MOVIMIENTO mOVIMIENTO = db.MOVIMIENTOes.Find(id);
             db.MOVIMIENTOes.Remove(mOVIMIENTO);
             db.SaveChanges();
+            CLIENTE Cliente = (from r in db.CLIENTEs.Where
+
+                                     (a => a.IdCliente == mOVIMIENTO.IdCliente)
+
+                               select r).FirstOrDefault();
+
+            Cliente.Balance = Cliente.Balance - mOVIMIENTO.Monto;
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -148,6 +174,41 @@ namespace Caja_Unapec.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult exportaExcel()
+        {
+
+            string filename = "Movimientos.csv";
+            string filepath = @"C:\temp\" + filename;
+            StreamWriter sw = new StreamWriter(filepath);
+            sw.WriteLine("ID del cliente,ID del movimiento,Fecha, Monto, Estado, ID del empleado, ID del documento, ID de la forma del pago, ID del servicio"); //Encabezado 
+            foreach (var i in db.MOVIMIENTOes.ToList())
+            {
+                sw.WriteLine(i.IdCliente.ToString() +
+                    "," + i.IdMovimiento.ToString() +
+                    "," + i.Fecha.ToString() + 
+                    "," + i.Monto.ToString() + 
+                    "," + i.Estado.ToString() + 
+                    "," + i.IdEmpleado.ToString() + 
+                    "," + i.IdDocumento.ToString() +
+                    "," + i.IdFormaPago.ToString() +
+                    "," + i.IdServicio.ToString()
+                    );
+            }
+            sw.Close();
+
+            byte[] filedata = System.IO.File.ReadAllBytes(filepath);
+            string contentType = MimeMapping.GetMimeMapping(filepath);
+
+            var cd = new System.Net.Mime.ContentDisposition
+            {
+                FileName = filename,
+                Inline = false,
+            };
+
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+
+            return File(filedata, contentType);
         }
     }
 }

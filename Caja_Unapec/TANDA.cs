@@ -11,8 +11,7 @@ namespace Caja_Unapec
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class TANDA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,9 +19,8 @@ namespace Caja_Unapec
         {
             this.EMPLEADOes = new HashSet<EMPLEADO>();
         }
-        [Required]
+    
         public int IdTanda { get; set; }
-        [Required]
         public string Nombre { get; set; }
         public bool Estado { get; set; }
     

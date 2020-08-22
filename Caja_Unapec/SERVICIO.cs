@@ -20,7 +20,7 @@ namespace Caja_Unapec
         {
             this.MOVIMIENTOes = new HashSet<MOVIMIENTO>();
         }
-        [Required]
+    
         public int IdServicio { get; set; }
         [Required]
         public string Descripcion { get; set; }

@@ -7,13 +7,13 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "CARRERA", "Null", new { @class = "btn btn-primary btn-large" })
 </p>
 <form method="get">
     <input type="text" id="Criterio" name="Criterio" />
     <input type="submit" id="cmdBuscar" value="Buscar" />
 </form>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)

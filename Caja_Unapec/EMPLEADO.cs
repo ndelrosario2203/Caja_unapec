@@ -20,14 +20,12 @@ namespace Caja_Unapec
         {
             this.MOVIMIENTOes = new HashSet<MOVIMIENTO>();
         }
-        [Required]
+    
         public int IdEmpleado { get; set; }
         [Required]
         public string Nombre { get; set; }
         [Required]
         public string Cedula { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime Fecha_Ingreso { get; set; }
         public bool Estado { get; set; }
         public int IdTanda { get; set; }

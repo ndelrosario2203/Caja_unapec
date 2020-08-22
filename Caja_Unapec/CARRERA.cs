@@ -20,7 +20,7 @@ namespace Caja_Unapec
         {
             this.CLIENTEs = new HashSet<CLIENTE>();
         }
-        [Required]
+    
         public int IdCarrera { get; set; }
         [Required]
         public string Nombre { get; set; }

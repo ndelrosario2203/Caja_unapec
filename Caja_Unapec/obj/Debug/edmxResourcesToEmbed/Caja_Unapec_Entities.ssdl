@@ -17,6 +17,7 @@
     <Property Name="Estado" Type="bit" Nullable="false" />
     <Property Name="IdTipoPersona" Type="int" Nullable="false" />
     <Property Name="IdCarrera" Type="int" Nullable="false" />
+    <Property Name="Balance" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="DOCUMENTO">
     <Key>

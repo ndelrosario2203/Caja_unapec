@@ -21,6 +21,7 @@
     <NavigationProperty Name="CARRERA" Relationship="Self.FK_CLIENTE_CARRERA" FromRole="CLIENTE" ToRole="CARRERA" />
     <NavigationProperty Name="TIPO_PERSONA" Relationship="Self.FK_CLIENTE_TIPO_PERSONA" FromRole="CLIENTE" ToRole="TIPO_PERSONA" />
     <NavigationProperty Name="MOVIMIENTOes" Relationship="Self.FK_MOVIMIENTO_CLIENTE" FromRole="CLIENTE" ToRole="MOVIMIENTO" />
+    <Property Name="Balance" Type="Double" Nullable="false" DefaultValue="0" />
   </EntityType>
   <EntityType Name="DOCUMENTO">
     <Key>

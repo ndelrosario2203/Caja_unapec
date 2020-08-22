@@ -16,11 +16,12 @@ namespace Caja_Unapec
     public partial class MOVIMIENTO
     {
         public int IdMovimiento { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required]
         public System.DateTime Fecha { get; set; }
-        [Range(1,double.MaxValue)]
+        [Required]
+        [Range(1, Double.MaxValue, ErrorMessage = "El monto no puede ser menor a 1")]
         public double Monto { get; set; }
+
         public bool Estado { get; set; }
         [Required]
         public int IdCliente { get; set; }

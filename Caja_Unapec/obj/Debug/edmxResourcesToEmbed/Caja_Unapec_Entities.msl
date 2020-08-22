@@ -13,6 +13,7 @@
     <EntitySetMapping Name="CLIENTEs">
       <EntityTypeMapping TypeName="Caja_UnapecModel.CLIENTE">
         <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
           <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />

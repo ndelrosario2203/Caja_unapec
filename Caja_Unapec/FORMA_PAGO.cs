@@ -11,8 +11,7 @@ namespace Caja_Unapec
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class FORMA_PAGO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,9 +19,8 @@ namespace Caja_Unapec
         {
             this.MOVIMIENTOes = new HashSet<MOVIMIENTO>();
         }
-        [Required]
+    
         public int IdFormaPago { get; set; }
-        [Required]
         public string Descripcion { get; set; }
         public bool Estado { get; set; }
         public int IdModalidadPago { get; set; }

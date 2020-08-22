@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Caja_UnapecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Caja_UnapecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CARRERA">
           <Key>
             <PropertyRef Name="IdCarrera" />
@@ -22,6 +22,7 @@
           <Property Name="Estado" Type="bit" Nullable="false" />
           <Property Name="IdTipoPersona" Type="int" Nullable="false" />
           <Property Name="IdCarrera" Type="int" Nullable="false" />
+          <Property Name="Balance" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="DOCUMENTO">
           <Key>
@@ -264,8 +265,7 @@
             <End Role="MOVIMIENTO" EntitySet="MOVIMIENTO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Caja_UnapecModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -290,6 +290,7 @@
           <NavigationProperty Name="CARRERA" Relationship="Self.FK_CLIENTE_CARRERA" FromRole="CLIENTE" ToRole="CARRERA" />
           <NavigationProperty Name="TIPO_PERSONA" Relationship="Self.FK_CLIENTE_TIPO_PERSONA" FromRole="CLIENTE" ToRole="TIPO_PERSONA" />
           <NavigationProperty Name="MOVIMIENTOes" Relationship="Self.FK_MOVIMIENTO_CLIENTE" FromRole="CLIENTE" ToRole="MOVIMIENTO" />
+          <Property Name="Balance" Type="Double" Nullable="false" DefaultValue="0" />
         </EntityType>
         <EntityType Name="DOCUMENTO">
           <Key>
@@ -564,6 +565,7 @@
           <EntitySetMapping Name="CLIENTEs">
             <EntityTypeMapping TypeName="Caja_UnapecModel.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
